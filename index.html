@@ -8,11 +8,13 @@
 </head>
 <body>
     <script>
+        let computerScore = 0
+        let playerScore = 0
+
         function getComputerChoice() { 
-            const computerChoices = ["rock", "paper", "scissor"] ;
+            const computerChoices = ["rock", "paper", "scissors"] ;
             let choice = Math.floor(Math.random() * computerChoices.length) ;
             let computerSelection = computerChoices[choice];
-            console.log(computerSelection);
             return(computerSelection);
         } 
 
@@ -21,7 +23,6 @@
             let result = playerChoice.toLowerCase();
             switch (result) {
                 case "rock": case "paper": case "scissors":
-                     console.log(result) ;
                      break
                 default:
                     console.log("Please enter Rock, Paper, or Scissors.");
@@ -40,19 +41,37 @@
             else if (
                 (player === "rock" && computer === "scissors") ||
                 (player === "paper" && computer === "rock") ||
-                (player === "scissors" && computer === "paper") ){
+                (player === "scissors" && computer === "paper") ) {
                 console.log('You win! ' + player + ' beats '+ computer);
+                return(playerScore++);
             }
 
             else if (
-            (player === "rock" && computer === "paper") ||
-            (player === "paper" && computer === "scissors") ||
-            (player === "scissors" && computer === "rock") ){
+                (player === "rock" && computer === "paper") ||
+                (player === "paper" && computer === "scissors") ||
+                (player === "scissors" && computer === "rock") ) {
                 console.log('You lose! ' + computer + ' beats ' + player);
+                return(computerScore++);
             }
         }
 
-        playRound();
+        function game() {
+
+            for (let i = 0; i < 5; i++) {
+                playRound(playerScore, computerScore);
+            }
+
+            if (playerScore === computerScore) {
+                console.log("Tie in 5. Try again.");
+            }
+            else if (playerScore > computerScore) {
+                console.log("You won! Reload to try again.")
+            }
+            else {
+                console.log("You lost. Better luck next time.")
+            }
+        }
+        game();
     </script>
  
 </body>
