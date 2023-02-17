@@ -20,14 +20,14 @@
 
         function playerChoice() {
             let playerChoice = prompt("Choose from Rock, Paper, or Scissors");
-            let result = playerChoice.toLowerCase();
-            switch (result) {
+            let playerSelection = playerChoice.toLowerCase();
+            switch (playerSelection) {
                 case "rock": case "paper": case "scissors":
                      break
                 default:
                     console.log("Please enter Rock, Paper, or Scissors.");
             }
-            return(result);
+            return(playerSelection);
         }
         
         function playRound(playerSelection, computerSelection) {
